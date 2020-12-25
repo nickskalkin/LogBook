@@ -18,12 +18,19 @@ module LogBook
     tag_list_composed << kind_tag(historizable) if historizable
     tag_list_composed += [tag_list].flatten     if tag_list
 
-    LogBook::Event.create!(
+    log_book = {
       :historian => historian,
       :historizable => historizable,
       :differences => differences,
       :tag_list => tag_list_composed
-    )
+    }
+    puts("Skipping creation of LogBook::Event #{log_book}")
+    # LogBook::Event.create!(
+    #   :historian => historian,
+    #   :historizable => historizable,
+    #   :differences => differences,
+    #   :tag_list => tag_list_composed
+    # )
   end
 
   private
